@@ -1,0 +1,254 @@
+/* =========================================================
+   OORJV — stylesheet
+   Palette: warm cream paper, deep forest green, rust red-clay
+   ring accent, turmeric gold accent.
+   ========================================================= */
+
+:root{
+  --cream:      #F6F1E4;
+  --paper:      #FBF8F1;
+  --ink:        #2B2620;
+  --ink-soft:   #4a4133;
+  --ink-faint:  #6b6252;
+  --forest:     #1F3D2B;
+  --forest-2:   #16301F;
+  --rust:       #B3502B;
+  --turmeric:   #D9A441;
+  --line:       rgba(43,38,32,.12);
+  --radius:     6px;
+  --shadow:     0 12px 30px rgba(31,61,43,.10);
+  --maxw:       1180px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:"Trebuchet MS","Segoe UI",Verdana,Geneva,sans-serif;
+  color:var(--forest);
+  line-height:1.15;
+  margin:0 0 14px;
+  letter-spacing:-.01em;
+}
+h1{ font-size:clamp(32px,5vw,54px); }
+h2{ font-size:clamp(26px,3.4vw,38px); }
+h3{ font-size:20px; }
+p{ margin:0 0 14px; color:var(--ink-soft); }
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; display:block; }
+ul{ margin:0; padding:0; list-style:none; }
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+/* subtle paper grain texture */
+.grain{ position:relative; }
+.grain::before{
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+  background-image:radial-gradient(circle at 1px 1px, #000 1px, transparent 0);
+  background-size:3px 3px;
+}
+
+/* -------------------- buttons -------------------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px 22px; border-radius:999px; font-family:"Trebuchet MS",sans-serif;
+  font-weight:700; font-size:14.5px; letter-spacing:.01em; border:2px solid transparent;
+  cursor:pointer; transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+  white-space:nowrap;
+}
+.btn:hover{ transform:translateY(-1px); }
+.btn-primary{ background:var(--forest); color:var(--cream); }
+.btn-primary:hover{ background:var(--forest-2); }
+.btn-gold{ background:var(--turmeric); color:var(--forest-2); }
+.btn-gold:hover{ box-shadow:0 6px 18px rgba(217,164,65,.4); }
+.btn-outline{ background:transparent; color:var(--forest); border-color:var(--forest); }
+.btn-outline:hover{ background:var(--forest); color:var(--cream); }
+.btn-lg{ padding:15px 28px; font-size:16px; }
+.btn-block{ width:100%; }
+
+/* -------------------- header -------------------- */
+.site-header{
+  position:sticky; top:0; z-index:50; background:rgba(251,248,241,.92);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+}
+.site-header .wrap{ display:flex; align-items:center; justify-content:space-between; height:78px; }
+.brand{ display:flex; align-items:center; gap:10px; font-family:"Trebuchet MS",sans-serif; font-weight:800; font-size:19px; color:var(--forest); }
+.brand span{ display:flex; flex-direction:column; line-height:1.1; }
+.brand small{ font-family:Georgia,serif; font-weight:400; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); }
+.seal{ width:38px; height:38px; flex:none; color:var(--forest); }
+.seal .ring{ fill:none; stroke:currentColor; }
+.seal .check{ fill:none; stroke:var(--forest); stroke-width:7; stroke-linecap:round; stroke-linejoin:round; }
+.nav{ display:flex; align-items:center; gap:28px; }
+.nav > a{ font-family:"Trebuchet MS",sans-serif; font-size:15px; font-weight:600; color:var(--ink-soft); padding:6px 2px; border-bottom:2px solid transparent; }
+.nav > a:hover, .nav > a.active{ color:var(--forest); border-color:var(--rust); }
+.header-cta{ display:flex; gap:10px; margin-left:12px; }
+.header-cta .btn{ padding:9px 18px; font-size:13.5px; }
+.nav-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:6px; }
+.nav-toggle span{ width:24px; height:2.5px; background:var(--forest); border-radius:2px; }
+
+/* -------------------- hero -------------------- */
+.hero{ background:var(--cream); padding:64px 0 56px; overflow:hidden; }
+.hero .wrap{ display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center; }
+.eyebrow{ font-family:"Trebuchet MS",sans-serif; font-weight:700; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--rust); margin-bottom:10px; }
+.lede{ font-size:18px; max-width:52ch; }
+.hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin:26px 0 30px; }
+.assurance-strip{ display:flex; flex-wrap:wrap; gap:10px; }
+.chip{ display:inline-flex; align-items:center; gap:6px; background:var(--paper); border:1px solid var(--line); padding:7px 14px 7px 10px; border-radius:999px; font-size:13px; font-weight:600; color:var(--ink-soft); }
+.chip svg{ width:15px; height:15px; color:var(--forest); flex:none; }
+.hero-art{ position:relative; }
+.hero-frame{ border-radius:14px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); }
+.hero-frame img{ width:100%; height:340px; object-fit:cover; }
+.hero-seal-float{ position:absolute; width:112px; height:112px; right:-18px; bottom:-18px; filter:drop-shadow(0 8px 18px rgba(0,0,0,.25)); }
+.seal-stamp .ring{ fill:none; stroke:var(--turmeric); }
+.seal-stamp .check{ fill:none; stroke:var(--cream); stroke-linecap:round; stroke-linejoin:round; }
+.seal-stamp text{ fill:var(--cream); font-family:"Trebuchet MS",sans-serif; font-weight:700; }
+
+/* -------------------- section shells -------------------- */
+.section-tight{ padding:72px 0; }
+.section-alt{ padding:72px 0; background:var(--cream); }
+.section-forest{ padding:80px 0; background:var(--forest-2); color:var(--cream); }
+.section-forest h2, .section-forest .eyebrow{ color:var(--cream); }
+.section-forest .eyebrow{ color:var(--turmeric); }
+.section-forest p{ color:rgba(246,241,228,.78); }
+.section-head{ max-width:640px; margin:0 auto 42px; text-align:center; }
+.section-head p{ margin:0 auto; }
+
+/* -------------------- grids / cards -------------------- */
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+.two-col{ display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; }
+
+.mark-card{ background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:26px 22px; }
+.section-alt .mark-card{ background:var(--paper); }
+.mark-card .ic{ width:30px; height:30px; color:var(--rust); margin-bottom:14px; }
+.mark-card h3{ margin-bottom:8px; }
+.mark-card p{ font-size:14.5px; margin:0; }
+
+.split-panel{ display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
+.split-panel > div{ padding:44px 38px; }
+.for-consumer{ background:var(--paper); border:1px solid var(--line); }
+.for-producer{ background:var(--forest); color:var(--cream); }
+.for-producer .eyebrow{ color:var(--turmeric); }
+.for-producer h3{ color:var(--cream); }
+.for-producer p{ color:rgba(246,241,228,.8); }
+
+.quote-block{ font-family:Georgia,serif; font-style:italic; font-size:20px; line-height:1.5; margin:0 0 4px; color:var(--cream); border-left:3px solid var(--turmeric); padding-left:22px; }
+.quote-block cite{ display:block; font-style:normal; font-family:"Trebuchet MS",sans-serif; font-size:13px; letter-spacing:.02em; color:var(--turmeric); margin-top:14px; }
+.divider{ height:1px; width:100%; }
+
+.note-card{ background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--rust); border-radius:var(--radius); padding:20px 22px; font-size:14.5px; color:var(--ink-soft); }
+
+/* -------------------- page hero (inner pages) -------------------- */
+.page-hero{ background:var(--cream); padding:52px 0 44px; }
+.breadcrumb{ font-size:13px; color:var(--ink-faint); margin-bottom:10px; }
+.breadcrumb a{ color:var(--rust); font-weight:600; }
+
+/* -------------------- stepper -------------------- */
+.stepper{ display:grid; gap:24px; }
+.step{ background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:26px 22px; position:relative; }
+.step .num{ font-family:"Trebuchet MS",sans-serif; font-weight:800; font-size:13px; letter-spacing:.06em; color:var(--turmeric); background:var(--forest); display:inline-block; padding:4px 10px; border-radius:999px; margin-bottom:14px; }
+.step h4{ font-family:"Trebuchet MS",sans-serif; color:var(--forest); font-size:17px; margin:0 0 8px; }
+.step p{ font-size:14.5px; margin:0; }
+
+/* -------------------- certified product cards -------------------- */
+.cert-card{ background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 6px 18px rgba(31,61,43,.06); display:flex; flex-direction:column; }
+.cert-card .thumb{ position:relative; height:170px; }
+.cert-card .thumb img{ width:100%; height:100%; object-fit:cover; }
+.cert-card .badge{ position:absolute; top:12px; left:12px; background:var(--forest); color:var(--cream); font-size:11.5px; font-weight:700; letter-spacing:.03em; padding:5px 11px; border-radius:999px; }
+.cert-card .body{ padding:20px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.cert-card .producer{ font-size:13px; color:var(--rust); font-weight:600; margin:0; }
+.cert-card .marks{ display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 6px; }
+.cert-card .marks span{ background:var(--cream); border:1px solid var(--line); font-size:11.5px; font-weight:600; padding:4px 9px; border-radius:999px; color:var(--forest); }
+.cert-card .meta{ font-size:12px; color:var(--ink-faint); margin:0 0 6px; }
+.cert-card .btn{ margin-top:auto; }
+
+/* -------------------- forms -------------------- */
+.field{ margin-bottom:18px; }
+.field label{ display:block; font-family:"Trebuchet MS",sans-serif; font-weight:700; font-size:13px; letter-spacing:.02em; color:var(--forest); margin-bottom:7px; }
+.field input, .field select, .field textarea{
+  width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:var(--radius);
+  background:var(--paper); font-family:inherit; font-size:15px; color:var(--ink); transition:border-color .15s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--rust); }
+.field textarea{ resize:vertical; min-height:110px; }
+.form-row{ display:grid; grid-template-columns:1fr 1fr; gap:0 20px; }
+.form-card{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:38px; box-shadow:var(--shadow); }
+.form-note{ font-size:13px; color:var(--ink-faint); margin-top:4px; }
+.form-success{ display:none; background:var(--forest); color:var(--cream); border-radius:var(--radius); padding:16px 18px; font-size:14.5px; margin-top:16px; }
+.form-success.show{ display:block; }
+
+/* -------------------- who-can-apply / benefits cards -------------------- */
+.icon-card{ background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:24px 20px; text-align:left; }
+.icon-card .ic{ width:28px; height:28px; color:var(--forest); margin-bottom:12px; }
+.icon-card h4{ font-family:"Trebuchet MS",sans-serif; color:var(--forest); font-size:16.5px; margin:0 0 6px; }
+.icon-card p{ font-size:14px; margin:0; }
+
+/* -------------------- stats -------------------- */
+.stat-strip{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; text-align:center; }
+.stat-strip .stat b{ display:block; font-family:"Trebuchet MS",sans-serif; font-size:36px; color:var(--turmeric); }
+.stat-strip .stat span{ font-size:13.5px; color:rgba(246,241,228,.75); }
+
+/* -------------------- FAQ accordion -------------------- */
+.faq-item{ border-bottom:1px solid var(--line); }
+.faq-q{ width:100%; text-align:left; background:none; border:0; padding:20px 0; display:flex; align-items:center; justify-content:space-between; gap:16px; cursor:pointer; font-family:"Trebuchet MS",sans-serif; font-weight:700; font-size:16px; color:var(--forest); }
+.faq-q .plus{ flex:none; width:22px; height:22px; position:relative; }
+.faq-q .plus::before, .faq-q .plus::after{ content:""; position:absolute; background:var(--rust); border-radius:2px; transition:transform .2s ease; }
+.faq-q .plus::before{ width:100%; height:2.5px; top:50%; left:0; transform:translateY(-50%); }
+.faq-q .plus::after{ width:2.5px; height:100%; left:50%; top:0; transform:translateX(-50%); }
+.faq-item.open .plus::after{ transform:translateX(-50%) scaleY(0); }
+.faq-a{ max-height:0; overflow:hidden; transition:max-height .25s ease; }
+.faq-a p{ padding-bottom:20px; margin:0; font-size:14.5px; }
+.faq-item.open .faq-a{ max-height:240px; }
+
+/* -------------------- footer -------------------- */
+.site-footer{ background:var(--forest-2); color:rgba(246,241,228,.85); padding:60px 0 24px; }
+.foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:36px; padding-bottom:40px; border-bottom:1px solid rgba(246,241,228,.14); }
+.site-footer .brand{ color:var(--cream); margin-bottom:10px; }
+.site-footer .brand span{ color:var(--cream); }
+.site-footer .seal{ color:var(--cream); }
+.site-footer .seal .check{ stroke:var(--cream); }
+.site-footer p{ color:rgba(246,241,228,.68); font-size:14px; }
+.site-footer h5{ font-family:"Trebuchet MS",sans-serif; color:var(--turmeric); font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; margin:0 0 14px; }
+.site-footer ul li{ margin-bottom:9px; font-size:14px; color:rgba(246,241,228,.7); }
+.site-footer ul li a:hover{ color:var(--cream); }
+.foot-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; padding-top:20px; font-size:12.5px; color:rgba(246,241,228,.5); }
+
+/* -------------------- whatsapp fab -------------------- */
+.whatsapp-fab{ position:fixed; right:22px; bottom:22px; width:54px; height:54px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(0,0,0,.25); z-index:60; }
+.whatsapp-fab svg{ width:28px; height:28px; color:#fff; }
+
+/* -------------------- responsive -------------------- */
+@media (max-width:900px){
+  .nav{ position:fixed; inset:78px 0 0 0; background:var(--paper); flex-direction:column; align-items:flex-start; padding:24px; gap:6px; transform:translateX(100%); transition:transform .25s ease; overflow-y:auto; }
+  .nav.open{ transform:translateX(0); }
+  .nav > a{ width:100%; padding:14px 0; border-bottom:1px solid var(--line); }
+  .header-cta{ flex-direction:column; width:100%; margin:14px 0 0; }
+  .header-cta .btn{ width:100%; }
+  .nav-toggle{ display:flex; }
+  .hero .wrap{ grid-template-columns:1fr; gap:36px; }
+  .hero-art{ order:-1; }
+  .two-col{ grid-template-columns:1fr; }
+  .split-panel{ grid-template-columns:1fr; }
+  .grid-4{ grid-template-columns:repeat(2,1fr); }
+  .grid-3{ grid-template-columns:repeat(2,1fr); }
+  .grid-2{ grid-template-columns:1fr; }
+  .stat-strip{ grid-template-columns:1fr; gap:28px; }
+  .foot-grid{ grid-template-columns:1fr 1fr; }
+  .form-row{ grid-template-columns:1fr; }
+}
+@media (max-width:600px){
+  .wrap{ padding:0 18px; }
+  .grid-4, .grid-3{ grid-template-columns:1fr; }
+  .hero{ padding:44px 0 40px; }
+  .section-tight, .section-alt, .section-forest{ padding:52px 0; }
+  .foot-grid{ grid-template-columns:1fr; gap:28px; }
+  .hero-frame img{ height:220px; }
+  .form-card{ padding:26px 20px; }
+}
