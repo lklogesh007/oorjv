@@ -77,11 +77,12 @@ ul{ margin:0; padding:0; list-style:none; }
   position:sticky; top:0; z-index:50; background:rgba(251,248,241,.92);
   backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
 }
-.site-header .wrap{ display:flex; align-items:center; justify-content:space-between; height:78px; }
+.site-header .wrap{ display:flex; align-items:center; justify-content:space-between; height:112px; }
 .brand{ display:flex; align-items:center; gap:10px; font-family:"Trebuchet MS",sans-serif; font-weight:800; font-size:19px; color:var(--forest); }
 .brand span{ display:flex; flex-direction:column; line-height:1.1; }
 .brand small{ font-family:Georgia,serif; font-weight:400; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); }
-.seal{ width:38px; height:38px; flex:none; color:var(--forest); }
+.seal{ width:42px; height:42px; flex:none; color:var(--forest); object-fit:contain; }
+.seal-lg{ width:96px; height:96px; }
 .seal .ring{ fill:none; stroke:currentColor; }
 .seal .check{ fill:none; stroke:var(--forest); stroke-width:7; stroke-linecap:round; stroke-linejoin:round; }
 .nav{ display:flex; align-items:center; gap:28px; }
@@ -226,7 +227,7 @@ ul{ margin:0; padding:0; list-style:none; }
 
 /* -------------------- responsive -------------------- */
 @media (max-width:900px){
-  .nav{ position:fixed; inset:78px 0 0 0; background:var(--paper); flex-direction:column; align-items:flex-start; padding:24px; gap:6px; transform:translateX(100%); transition:transform .25s ease; overflow-y:auto; }
+  .nav{ position:fixed; inset:112px 0 0 0; background:var(--paper); flex-direction:column; align-items:flex-start; padding:24px; gap:6px; transform:translateX(100%); transition:transform .25s ease; overflow-y:auto; }
   .nav.open{ transform:translateX(0); }
   .nav > a{ width:100%; padding:14px 0; border-bottom:1px solid var(--line); }
   .header-cta{ flex-direction:column; width:100%; margin:14px 0 0; }
@@ -244,6 +245,9 @@ ul{ margin:0; padding:0; list-style:none; }
   .form-row{ grid-template-columns:1fr; }
 }
 @media (max-width:600px){
+  .site-header .wrap{ height:88px; }
+  .seal-lg{ width:70px; height:70px; }
+  .nav{ inset:88px 0 0 0; }
   .wrap{ padding:0 18px; }
   .grid-4, .grid-3{ grid-template-columns:1fr; }
   .hero{ padding:44px 0 40px; }
